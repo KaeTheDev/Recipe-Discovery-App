@@ -20,3 +20,10 @@ type Ingredients = {
     loading: boolean;
     error: string | null;
   }
+
+  export interface FavoritesContextType {
+    favorites: string[]; // array of recipe IDs
+    addFavorite: (id: string) => void;
+    removeFavorite: (id: string) => void;
+    isFavorite: (id: string) => boolean;
+  }
