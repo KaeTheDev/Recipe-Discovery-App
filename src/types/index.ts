@@ -14,3 +14,9 @@ type Ingredients = {
     strInstructions: string;
     strMealThumb: string;
   }  
+
+  export interface FetchProps<T> {
+    data: T | null;
+    loading: boolean;
+    error: string | null;
+  }
