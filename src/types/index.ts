@@ -15,6 +15,14 @@ type Ingredients = {
     strMealThumb: string;
   }  
 
+  export interface RecipeCardProps {
+    idMeal: string;
+    strMeal: string;
+    strMealThumb: string;
+    strCategory: string;
+    strArea: string; 
+  }
+
   export interface RecipeCategories {
     idCategory: string;
     strCategory: string;
