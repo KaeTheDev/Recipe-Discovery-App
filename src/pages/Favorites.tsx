@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import FavoritesContext from "../context/FavoritesContext";
 import type { Recipe } from "../types";
 
@@ -61,9 +62,10 @@ export const Favorites: React.FC = () => {
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {recipes.map((meal) => (
-                <div
+                  <Link
                   key={meal.idMeal}
-                  className="border rounded-lg shadow hover:shadow-lg transition p-4"
+                  to={`/recipe/${meal.idMeal}`}
+                  className="border rounded-lg shadow hover:shadow-lg transition p-4 block hover:-translate-y-1"
                 >
                   <img
                     src={meal.strMealThumb}
@@ -74,7 +76,7 @@ export const Favorites: React.FC = () => {
                   <p className="text-sm text-gray-600">
                     {meal.strCategory} • {meal.strArea}
                   </p>
-                </div>
+                  </Link>
               ))}
             </div>
           )}
