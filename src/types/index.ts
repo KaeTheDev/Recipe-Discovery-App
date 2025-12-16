@@ -38,6 +38,7 @@ type Ingredients = {
 
   export interface SearchRecipe {
     idMeal: string;
+    strMealThumb: string;
     strMeal: string;
     strCategory: string;
     strArea: string;

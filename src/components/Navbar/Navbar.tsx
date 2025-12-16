@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import useFetch from "../../custom-hooks/useFetch";
 import type { SearchRecipe } from "../../types";
@@ -7,6 +7,7 @@ export const Navbar: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   const { data, loading, error } = useFetch<{ meals: SearchRecipe[] | null }>(
     searchTerm
@@ -17,6 +18,13 @@ export const Navbar: React.FC = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
     setIsDropdownOpen(true);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && searchTerm.trim()) {
+      setIsDropdownOpen(false);
+      navigate(`/search?query=${encodeURIComponent(searchTerm.trim())}`);
+    }
   };
 
   useEffect(() => {
@@ -43,6 +51,7 @@ export const Navbar: React.FC = () => {
             placeholder="Search Recipes..."
             value={searchTerm}
             onChange={handleChange}
+            onKeyDown={handleKeyDown}
             className="w-full border px-4 py-2 rounded text-white"
           />
 
