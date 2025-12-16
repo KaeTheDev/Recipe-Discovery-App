@@ -15,6 +15,13 @@ type Ingredients = {
     strMealThumb: string;
   }  
 
+  export interface RecipeCategories {
+    idCategory: string;
+    strCategory: string;
+    strCategoryThumb: string;
+    strCategoryDescription: string;
+  }
+
   export interface FetchProps<T> {
     data: T | null;
     loading: boolean;
