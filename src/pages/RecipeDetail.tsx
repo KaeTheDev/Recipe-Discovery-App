@@ -3,6 +3,8 @@ import { useContext } from "react";
 import type { Recipe } from "../types";
 import useFetch from "../custom-hooks/useFetch";
 import FavoritesContext from "../context/FavoritesContext";
+import Spinner from "../components/Spinner/Spinner";
+
 
 export const RecipeDetail: React.FC = () => {
   // ✅ 1. Get Favorites Context FIRST and guard it
@@ -22,7 +24,7 @@ export const RecipeDetail: React.FC = () => {
     `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipeID}`
   );
 
-  if (loading) return <p className="text-center mt-6">Loading...</p>;
+  if (loading) return <Spinner message="Fetching recipe details..." />;
   if (error) return <p className="text-center mt-6">{error}</p>;
 
   // ✅ 4. Extract meal safely

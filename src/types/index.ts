@@ -43,6 +43,10 @@ type Ingredients = {
     strArea: string;
   }
 
+  export interface LoadingProps {
+    message?: string;
+  }
+
   export interface FetchProps<T> {
     data: T | null;
     loading: boolean;

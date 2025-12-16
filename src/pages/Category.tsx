@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import type { CategoryRecipe } from "../types";
 import useFetch from "../custom-hooks/useFetch";
+import Spinner from "../components/Spinner/Spinner";
 
 export const Category: React.FC = () => {
   const { categoryName } = useParams<{ categoryName: string}>();
@@ -9,7 +10,7 @@ export const Category: React.FC = () => {
     `https://www.themealdb.com/api/json/v1/1/filter.php?c=${categoryName}`
   );
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Spinner message="Loading..." />;
   if (error) return <p>{error}</p>;
   if (!data || !data.meals) return <p>No recipes found for {categoryName}.</p>;
 

@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import type { RecipeCategories } from "../types";
 import useFetch from "../custom-hooks/useFetch";
+import Spinner from "../components/Spinner/Spinner";
 
 export const Home: React.FC = () => {
     const { data, loading, error } = useFetch<{ categories: RecipeCategories[] }>(
         "https://www.themealdb.com/api/json/v1/1/categories.php"
       );
 
-if(loading) return <p>Loading...</p>
+      if (loading) return <Spinner message="Loading..." />;
 if(error) return <p>{error}</p>
 
 return(
