@@ -21,7 +21,7 @@ export const Category: React.FC = () => {
         {data?.meals.map((meal) => (
           <Link
             key={meal.idMeal}
-            to={`/recipe/${meal.strMeal}`}
+            to={`/recipe/${meal.idMeal}`}
             className="block p-4 text-center border rounded-lg hover:shadow-lg transition-transform transform hover:-translate-y-1"
           >
             <img
