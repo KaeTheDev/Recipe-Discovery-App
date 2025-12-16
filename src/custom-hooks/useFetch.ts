@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function useFetch<T>(url: string) {
+function useFetch<T>(url: string | null) {
   // 1️ Define state inside the hook
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -8,7 +8,11 @@ function useFetch<T>(url: string) {
 
     // 2️ Fetch logic
   useEffect(() => {
+    if (!url) return;
+
     setLoading(true);
+    setError(null);
+
     fetch(url)
       .then(res => res.json())
       .then(json => setData(json))

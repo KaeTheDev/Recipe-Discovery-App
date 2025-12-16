@@ -28,6 +28,13 @@ type Ingredients = {
     idMeal: string;
   }
 
+  export interface SearchRecipe {
+    idMeal: string;
+    strMeal: string;
+    strCategory: string;
+    strArea: string;
+  }
+
   export interface FetchProps<T> {
     data: T | null;
     loading: boolean;
