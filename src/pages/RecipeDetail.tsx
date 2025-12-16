@@ -13,11 +13,18 @@ export const RecipeDetail: React.FC = () => {
 
   const meal = data?.meals?.[0];
 
-  if (!meal) return <p className="text-center mt-6">No recipe details found for {recipeID}.</p>;
+  if (!meal)
+    return (
+      <p className="text-center mt-6">
+        No recipe details found for {recipeID}.
+      </p>
+    );
 
   // Build the ingredients array
   const ingredients: string[] = Array.from({ length: 20 }, (_, i) => {
-    const ingredient = meal[`strIngredient${i + 1}` as keyof Recipe] as string | null;
+    const ingredient = meal[`strIngredient${i + 1}` as keyof Recipe] as
+      | string
+      | null;
     const measure = meal[`strMeasure${i + 1}` as keyof Recipe] as string | null;
     if (ingredient && ingredient.trim() !== "") {
       return `${measure ?? ""} ${ingredient}`;
@@ -33,13 +40,22 @@ export const RecipeDetail: React.FC = () => {
         src={meal.strMealThumb}
         alt={meal.strMeal}
       />
-
       {/* Recipe Details */}
       <div className="space-y-4">
+        {/* Add to Favorites Button */}
+        <button className="bg-green-700 hover:bg-green-500 text-white px-4 py-2 rounded transition-transform hover:scale-105">
+          Add to Favorites
+        </button>
         <h1 className="text-3xl font-bold">{meal.strMeal}</h1>
-        <p><span className="font-semibold">Recipe ID:</span> {meal.idMeal}</p>
-        <p><span className="font-semibold">Category:</span> {meal.strCategory}</p>
-        <p><span className="font-semibold">Area:</span> {meal.strArea}</p>
+        <p>
+          <span className="font-semibold">Recipe ID:</span> {meal.idMeal}
+        </p>
+        <p>
+          <span className="font-semibold">Category:</span> {meal.strCategory}
+        </p>
+        <p>
+          <span className="font-semibold">Area:</span> {meal.strArea}
+        </p>
 
         {/* Ingredients */}
         <div>
