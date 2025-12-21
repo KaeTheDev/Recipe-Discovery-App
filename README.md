@@ -98,7 +98,7 @@ npm run dev
 
 *  components/ — Contains all React components used in the app.
 *  types/ — Shared TypeScript types/interfaces used across components.
-* utils / -
+* utils / - Utility functions such as API helpers.
 
 ## Reflection
 
